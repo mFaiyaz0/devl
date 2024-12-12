@@ -1,0 +1,128 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+df=pd.read_csv(r"D:\Downloads\car_price_prediction.csv")
+df.isna().sum()
+df.dtypes
+df.head()
+# Create the figure and axes
+fig, ax = plt.subplots()
+# Set background color for the entire figure
+fig.patch.set_facecolor("lightgrey") # Color for the entire figure
+# Set background color for the plot area (inside the axes)
+ax.set_facecolor("lightyellow") # Color for the plot area
+sns.countplot(x="Fuel_type",data=df,palette= "husl",hue="Gear_box_type")
+plt.figure(figsize=(25,8))
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots()
+plt.title("Scatter plot on car_price_prediction dataset")
+# Set background color for the entire figure
+fig.patch.set_facecolor("lightgrey") # Color for the entire figure
+# Set background color for the plot area (inside the axes)
+ax.set_facecolor("skyblue")
+sns.scatterplot(x="Price",y="Category",data=df,hue="Leather_interior")
+plt.show()
+import matplotlib.pyplot as plt
+import seaborn as sn
+# Create the figure and axes with the desired size
+fig, ax = plt.subplots(figsize=(25, 8))
+# Set the plot title
+plt.title("Price of car", fontsize=16)
+# Create a line plot with different colors for each Fuel type
+sns.lineplot(x="Price", y="Category", data=df, palette="husl", hue="Fuel_type",␣
+↪ax=ax)
+# Set background colors
+fig.patch.set_facecolor("lightblue") # Background for entire figure
+ax.set_facecolor("lightyellow") # Background for the plot area
+# Show the plot
+plt.show()
+fig, ax = plt.subplots(figsize=(25, 8))
+# Set the plot title
+plt.title("Price of car", fontsize=16)
+# Create a bar plot with different colors for each Fuel type
+sns.barplot(x="Price", y="Category", data=df, palette="husl", hue="Fuel_type",␣
+↪ax=ax)
+# Set background colors
+fig.patch.set_facecolor("lightblue") # Background for entire figure
+ax.set_facecolor("lightyellow") # Background for the plot area
+# Show the plot
+plt.show()
+fig, ax = plt.subplots(figsize=(25, 8))
+# Set the plot title
+plt.title("Price of car", fontsize=16)
+
+5
+
+# Create a histogram plot with different colors for each Fuel type
+sns.histplot(x="Category", data=df, palette="husl", hue="Fuel_type", ax=ax)
+# Set background colors
+fig.patch.set_facecolor("lightblue") # Background for entire figure
+ax.set_facecolor("lightyellow") # Background for the plot area
+# Show the plot
+plt.show()
+import seaborn as sns
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots(figsize=(25, 8))
+# Let's assume your dataframe contains numerical values for each category and␣
+↪type
+# Pivot the dataframe to get a 2D table with numerical values
+pivot_df = df.pivot_table(index="Fuel_type", columns="Category", values="Price")
+# Create the heatmap
+# Adjust the figure size
+sns.heatmap(pivot_df, cmap="coolwarm", annot=True, fmt=".1f", linewidths=0.5)
+fig.patch.set_facecolor("lightblue") # Background for entire figure
+ax.set_facecolor("lightyellow") # Background for the plot area
+# Show the plot
+plt.show()
+from matplotlib import pyplot as plt
+import pandas as pd
+data = pd.read_csv(r"D:\Downloads\healthcare-dataset-stroke-data.csv")
+data.shape
+data.describe()
+# Line Plot
+fig, ax = plt.subplots(figsize=(10, 8))
+plt.plot(data.age,data.work_type,'-go')
+plt.title('Line Graph of Health Care Dataset')
+plt.xlabel('Age')
+plt.ylabel('Work Type')
+fig.patch.set_facecolor("lightblue") # Background for entire figure
+ax.set_facecolor("lightyellow") # Background for the plot area
+plt.show()
+# # Line Plot
+fig, ax = plt.subplots(figsize=(10, 5))
+plt.bar(data.age,data.avg_glucose)
+plt.title('Bar Graph of Health Care Dataset')
+plt.xlabel('Age')
+plt.ylabel('Average Glucose Level')
+fig.patch.set_facecolor("lightblue") # Background for entire figure
+ax.set_facecolor("lightyellow") # Background for the plot area
+plt.show()
+# Line Plot
+fig, ax = plt.subplots(figsize=(10, 8))
+plt.scatter(data.age,data.bmi)
+plt.title('Scatter plot of Health Care Dataset')
+plt.xlabel('Age')
+plt.ylabel('BMI')
+fig.patch.set_facecolor("lightblue") # Background for entire figure
+ax.set_facecolor("lightyellow") # Background for the plot area
+plt.show()
+plt.figure(figsize=(10,5))
+plt.hist(data.smoking_status)
+plt.title('Histogram of smoking')
+plt.show()
+data.hist()
+plt.figure(figsize=(100,80))
+plt.show()
+import pandas as pd
+import matplotlib.pyplot as plt
+mydataset = {'Cars':['BWM','Volvo','Audi','Tesla','Force','Thar'],'Price':
+↪['1cr','1.5cr','2cr','5cr','5olac','20lac'],'Hp':
+↪[20,30,50,40,64,24],'Mileage_KM':[8,5.5,6,7,2.5,5.78]}
+df = pd.DataFrame(mydataset)
+df.plot(x="Cars",labels=df.Cars,y="Hp",kind="pie",color="red")
+plt.xlabel("Car")
+plt.ylabel("Hp of car")
+plt.title("Car Price")
+plt.show()

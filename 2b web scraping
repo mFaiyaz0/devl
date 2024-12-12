@@ -1,0 +1,82 @@
+#NAME:-MOHAMMAD FAIYAZ
+#PRN:-123B1B192
+#ASSIGNMENT:-2b
+
+#importing requests library for making https requests
+import requests as r  
+#importing  beautiful soup for parsing html
+from bs4 import BeautifulSoup
+response=r.get("https://en.wikipedia.org/wiki/2018_in_film") #making the GET request to get contents of webpage
+wiki_text=response.text  #extracting the raw html text
+print(wiki_text) 
+
+import requests as r  
+from bs4 import BeautifulSoup  
+
+response = r.get("https://en.wikipedia.org/wiki/2018_in_film")
+
+# Parsing the HTML content: Parsing is the process of analyzing a sequence of symbols (such as text, code, or data) 
+# to extract meaningful information or structure from it
+soup = BeautifulSoup(response.text, 'html.parser')
+
+# Printing the <title> tag of the page.
+print(soup.title)
+
+
+import requests as r  
+from bs4 import BeautifulSoup 
+
+response = r.get("https://en.wikipedia.org/wiki/2018_in_film")
+
+soup = BeautifulSoup(response.text, 'html.parser')
+
+# Printing the first <table> element found in the HTML page. If multiple tables exist, it will only return the first one.
+print(soup.table)
+
+
+import requests as r  
+from bs4 import BeautifulSoup  
+
+response = r.get("https://en.wikipedia.org/wiki/2018_in_film")
+
+soup = BeautifulSoup(response.text, 'html.parser')
+
+# Printing the entire HTML content of the parsed webpage in a nicely formatted (indented) structure.
+print(soup.prettify())
+
+
+import requests as r 
+from bs4 import BeautifulSoup 
+
+response = r.get("https://en.wikipedia.org/wiki/2018_in_film")
+
+soup = BeautifulSoup(response.text, 'html.parser')
+
+# Finding all <table> elements on the webpage and storing them in a list (since findAll returns a list).
+table_soup = soup.findAll('table')
+
+print(table_soup)
+
+
+import requests as r
+from bs4 import BeautifulSoup
+
+response=r.get("https://en.wikipedia.org/wiki/2018_in_film")
+soup=BeautifulSoup(response.text,'html.parser')
+table_soup=soup.findAll('table')
+#filtering to get the contents of 4th table (3rd index) from the page
+filtered_table_soup=table_soup[3] 
+print(filtered_table_soup)
+
+import requests as r
+from bs4 import BeautifulSoup
+
+response = r.get("https://en.wikipedia.org/wiki/2018_in_film") 
+soup = BeautifulSoup(response.text, 'html.parser') 
+ 
+urls = []  #empty list to store the URLs
+
+# Looping through all <a> (anchor) elements found in the HTML and extracting the 'href' attribute (which contains the URL).
+for link in soup.find_all('a'):
+    print(link.get('href'))
+

@@ -1,0 +1,103 @@
+<h1>Problem statement: Assume our business has two units that make pizzas. Check if there is any significant difference in the average diameter of pizzas between the two making units.
+
+import pandas as pd
+import numpy as np
+
+<h1> Step 1: Collect data </h1>
+
+df=pd.read_csv('pizzas.csv')
+
+df.head(4)
+
+df.shape
+
+<h1> Check Normality for Making Unit 1 and Making Unit 2 follow step 2
+
+<h1> Step 2a: Define null and alternative hypotheses and set alpha </h1>
+
+H0 = 'Data is normal'
+Ha = 'Data is not normal'
+alpha = 0.05
+
+<h1> Step 2b: Run a test to check the normality </h1>
+
+from scipy.stats import shapiro
+p1 = round(shapiro(df['Making Unit 1'])[1],2)
+
+print(p1)
+
+p2 = round(shapiro(df['Making Unit 2'])[1],2)
+
+print(p2)
+
+<h1> Step 2c: Conclude using the p-value from step 3 </h1>
+
+if p1 > alpha:
+    print(f"{p1} > {alpha}. We fail to reject Null Hypothesis for Making Unit 1. {H0}")
+else:
+	print(f"{p1} <= {alpha}. We reject Null Hypothesis for Making Unit 1. {Ha}")
+
+if p2 > alpha:
+    print(f"{p2} > {alpha}. We fail to reject Null Hypothesis Making Unit 2. {H0}")
+else:
+	print(f"{p2} <= {alpha}. We reject Null Hypothesis Making Unit 2. {Ha}")
+
+<h1> Step 3: Check if the variances are equal.
+
+# Defining Null and Alternative Hypotheses
+H0 = 'Variance of Unit A is approximately equal to Variance of Unit B'
+
+Ha = 'Variance of Unit A is not equal to Variance of Unit B'
+
+
+
+from scipy.stats import levene
+
+def check_variances(df):
+    print('n' + "*** Variances Test Results' ***")
+
+    p = round(levene(df['Making Unit 1'], df['Making Unit 2'])[1],2)
+
+    if p>alpha:
+
+        print(f"{p} > {alpha}. We fail to reject Null Hypothesis. {H0}")
+
+    else:
+
+        print(f"{p} <= {alpha}. We reject Null Hypothesis. {Ha}")
+
+check_variances(df)
+
+
+<h1> Variances are equal, so we go for 2 Sample T-test for equal variances
+
+<h2> Step 4: Run the T-test for two samples with equal variances
+
+H0 = 'There is no significant difference.'
+
+Ha = 'There exist a significant difference.'
+
+ 
+
+from scipy.stats import ttest_ind
+
+def t_test(df):
+
+    print('n' + "*** 2 Sample T Test Results ***")
+
+    test_results = ttest_ind(df['Making Unit 1'], df['Making Unit 2'], equal_var=True)
+
+    p = round(test_results[1],2)
+
+    if p>alpha:
+
+        print(f"{p} > {alpha}. We fail to reject Null Hypothesis. {H0}")
+
+    else:
+
+        print(f"{p} <= {alpha}. We reject Null Hypothesis. {Ha}")
+
+ 
+t_test(df)
+
+

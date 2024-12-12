@@ -1,0 +1,37 @@
+&#39;&#39;&#39;ADDING ELEMENTS IN LIST&#39;&#39;&#39;
+my_list = [1, 2, 3]
+my_list.append(4)
+print(&quot;After append:&quot;, my_list)
+my_list.insert(1, 10)
+print(&quot;After insert:&quot;, my_list)
+my_list.extend([5, 6, 7])
+print(&quot;After extend:&quot;, my_list)
+&#39;&#39;&#39;BASICS OPERATIONS ON LIST&#39;&#39;&#39;
+print(&quot;Length of list:&quot;, len(my_list))
+print(&quot;Max element:&quot;, max(my_list))
+print(&quot;Min element:&quot;, min(my_list))
+print(&quot;Sum of elements:&quot;, sum(my_list))
+&#39;&#39;&#39;REMOVING ELEMENTS FROM LIST&#39;&#39;&#39;
+my_list.remove(3)
+print(&quot;After remove:&quot;, my_list)
+popped_element = my_list.pop(1)
+print(&quot;After pop:&quot;, my_list)
+print(&quot;Popped element:&quot;, popped_element)
+my_list.clear()
+print(&quot;After clear:&quot;, my_list)
+&#39;&#39;&#39;SLICING IN LIST&#39;&#39;&#39;
+
+my_list2 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+sub_list = my_list2[2:6]
+print(&quot;Slice from index 2 to 5:&quot;, sub_list)
+sub_list = my_list2[1:8:2]
+print(&quot;Slice with step of 2:&quot;, sub_list)
+print(&quot;From start to index 4:&quot;, my_list2[:5])
+print(&quot;From index 5 to end:&quot;, my_list2[5:])
+print(&quot;Last 3 elements:&quot;, my_list2[-3:])
+
+squares = [x**2 for x in range(10)]
+print(&quot;Squares:&quot;, squares) # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+even_squares = [x**2 for x in range(10) if x % 2 == 0]
+print(&quot;Even squares:&quot;, even_squares) # [0, 4, 16, 36, 64]

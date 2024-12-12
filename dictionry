@@ -1,0 +1,64 @@
+school = {'Faiyaz': 45,
+'Niraj': 56,
+'Emamul': 23}
+def add(name, score):
+if name in school:
+print(f"The student {name} is already in the list. Try adding a new student.")
+else:
+school[name] = score
+print(f"The student {name} is added to the list with a score of {score}.")
+def update(name, score):
+if name in school:
+school[name] = score
+print(f"Mark of student {name} is updated to {score}.")
+else:
+print(f"The student {name} is not in the list. Please add the student first.")
+def delet(name):
+if name in school:
+del school[name]
+print(f"Student {name} is deleted from the list.")
+else:
+print(f"Student {name} is not found in the list. Please add first.")
+def max_score():
+if school:
+highest_score = -100
+highest_scorer = None
+for name, score in school.items():
+if score > highest_score:
+highest_score = score
+highest_scorer = name
+print(f"Student {highest_scorer} has the highest score of {highest_score}.")
+else:
+print("No students in the list to find the maximum score.")
+def switch_case(c):
+if c == 1:
+name = input("Enter the student's name: ")
+score = int(input("Enter the student's score: "))
+return add(name, score)
+elif c == 2:
+name = input("Enter the student's name: ")
+score = int(input("Enter the student's score: "))
+return update(name, score)
+elif c == 3:
+name = input("Enter the student's name: ")
+return delet(name)
+elif c == 4:
+return max_score()
+elif c == 5:
+print("Exiting Menu.......")
+return False
+else:
+print("Option Not Matched")
+return True
+while True:
+print("\n1 : Add New Student")
+print("2 : Update The List")
+print("3 : Delete The Data")
+print("4 : Find Maximum Scorer")
+print("5 : Exit")
+print(school)
+c = int(input("Enter your choice: "))
+result = switch_case(c)
+if result is False:
+break
+print("Program Ended.")

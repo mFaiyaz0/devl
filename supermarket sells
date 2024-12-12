@@ -1,0 +1,68 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+data=pd.read_csv('/content/sample_data/supermarket_sales - Sheet1.csv',parse_dates=['Date'])
+
+import warnings
+
+warnings.filterwarnings('ignore')
+
+data.head()
+
+data.tail()
+
+data.dtypes
+
+
+data.shape
+
+#random 5 rows
+data.sample(5)
+
+#check for null values in the dataset
+data.isnull().sum()
+
+#get information about dataset like total number rows, total numbercolumns, datatypes of each column and memory requirement
+data.info()
+
+data.info()
+
+#get overall statistics about dataset
+data.describe()
+
+cat=[]
+num=[]
+for column in data.columns:
+  if data[column].nunique()>10:
+    num.append(column)
+  else:
+    cat.append(column)
+
+cat
+
+num
+
+#find aggregate sales among branches (categorical column)
+#sns.countplot(data['Branch'])
+sns.countplot(data['Branch'])
+
+data['Branch'].value_counts()
+
+data['Branch'].value_counts().plot(kind="pie",autopct="%1.2f%%")
+
+#find the most popular payment methodused by customers (categorical)
+data['Payment'].value_counts().plot(kind="bar")
+
+#find the distribution of customer ratings (numerical column)
+#sns.displot(data['Rating'])
+sns.distplot(data['Rating'])
+
+data['Rating'].skew()
+
+#Find the distribution of cost of good solds (numerical)
+sns.distplot(data['cogs'])
+
+data['cogs'].skew()
+
+sns.boxplot(data['cogs'])
